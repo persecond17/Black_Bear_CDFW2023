@@ -50,12 +50,12 @@ First, pull twi.yml file:
 
 Create or update an environment using twi.yml on your local machine:
 
-`$ conda env create -f twi.yml -n [name_of_your_environment]`<br>   
+`$ conda env create -f twi.yml -n [name_of_your_environment]`<br>
 `$ conda env update -f twi.yml -n [name_of_your_environment]`
 
 Activate or deactivate your environment on your local machine:
 
-`$ conda activate [name_of_your_environment]`<br>   
+`$ conda activate [name_of_your_environment]`<br>
 `$ conda deactivate`
 
 Export the environment file to share and reproduce the current environments:
@@ -70,7 +70,7 @@ Push your updated environment onto github:
 
 `$ git push origin`
 
-## How to Create a Branch
+## Creating a Branch
 
 First, pull changes from upstream before creating a new branch:
 
@@ -88,8 +88,4 @@ Push your branch onto github:
 
 `$ git push origin [name_of_your_branch]`
 
-Pushing your branch will create a pull request that can be reviewed before merging it with the master branch.
-
-This is how to create a local branch without switching into it:
-
-`$ git branch <name_of_your_branch>`
+Pushing your branch will create a pull request that can be reviewed before merging it with the master branch. You can follow the path *Pull requests -> create pull request -> (base: main, compared: your_branch -> create button)* to create code review tasks on GitHub pages. If there is no conflict on files, you may click *merge button* and delete the branch to complete the merge.
