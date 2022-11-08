@@ -13,7 +13,7 @@ We are currently working to achieve this by using machine learning to classify r
 
 # Roadmap
 
-## Scraping data from Twitter 
+## Scraping data 
 
 Setting the developer environment and getting Twitter API; writing code to scrape data with keywords for selected periods; extracting features for each record; exploring demo for the automatic process(data pipeline).
 
@@ -21,7 +21,7 @@ Setting the developer environment and getting Twitter API; writing code to scrap
 - Extracting features
 - Building a pipeline
 
-## Cleaning data & labeling 
+## Cleaning & Labeling 
 
 Detecting the situations of the collected tweets (“encounter black bears or not”, “talking about real bears or not”); checking data types, deleting outliers, filling Nan values, etc.; manually category each record; creating a database.
 
@@ -33,10 +33,10 @@ Training the categorical model with the training set; tuning hyperparameters wit
 
 Deploying the model to production(AWS); building a dashboard for displaying the search results from the database; combining GIS data for further analyses; designing UI; monitoring and collecting data trends.
 
-## Research Report/further exploration
+## Further exploration
 
 
-# Reminder
+# Collaborating reminder
 
 * When you push your code to the repository, it might cause errors on other's machines if they don't have all the libraries you used. Please use the [twi.yml](https://github.com/persecond17/CDFW2023/blob/main/twi.yml) file in the repo to create/update the virtual environment for running programs on your end.
 
@@ -88,4 +88,5 @@ Push your branch onto github:
 
 `$ git push origin [name_of_your_branch]`
 
-Pushing your branch will create a pull request that can be reviewed before merging it with the master branch. You can follow the path *Pull requests -> create pull request -> (base: main, compared: your_branch -> create button)* to create code review tasks on GitHub pages. If there is no conflict on files, you may click *merge button* and delete the branch to complete the merge.
+Pushing your branch will create a pull request that can be reviewed before merging it with the master branch. You can follow the path *Pull requests -> (base: main, compared: your_branch) -> create pull requests* to create code review tasks on GitHub pages. 
+If there is no conflict on files, you may click *merge branch* and *delete branch* to complete the merge.
