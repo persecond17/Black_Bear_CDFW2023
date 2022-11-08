@@ -88,5 +88,6 @@ Push your branch onto github:
 
 `$ git push origin [name_of_your_branch]`
 
-Pushing your branch will create a pull request that can be reviewed before merging it with the master branch. You can follow the path *Pull requests -> (base: main, compared: your_branch) -> create pull requests* to create code review tasks on GitHub pages. 
-If there is no conflict on files, you may click *merge branch* and *delete branch* to complete the merge.
+Pushing your branch will create a pull request that can be reviewed before merging it with the master branch. You can follow the path **Pull requests -> New pull request -> (base: main, compared: your_branch) -> Create pull request** to create code review tasks on GitHub pages. 
+
+If there is no conflict on files, you may click **Merge pull request -> Confirm merge -> Delete branch** to complete the merge process.
