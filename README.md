@@ -38,7 +38,7 @@ Deploying the model to production(AWS); building a dashboard for displaying the 
 
 # Reminder
 
-* When you push your code to the repository, it might cause errors on other's machines if they don't have all the libraries you used. Please use the twi.yml file in the repo to create/update the virtual environment for running programs on your end.
+* When you push your code to the repository, it might cause errors on other's machines if they don't have all the libraries you used. Please use the [twi.yml]("https://github.com/persecond17/CDFW2023/blob/main/twi.yml") file in the repo to create/update the virtual environment for running programs on your end.
 
 * A branch allows you to work independently of the master branch. After contributed to your branch, you can make a pull request to merge it with the master branch.
 
@@ -50,12 +50,12 @@ First, pull twi.yml file:
 
 Create or update an environment using twi.yml on your local machine:
 
-`$ conda env create -f twi.yml -n [name_of_your_environment]` 
+`$ conda env create -f twi.yml -n [name_of_your_environment]` <br>   
 `$ conda env update -f twi.yml -n [name_of_your_environment]`
 
 Activate or deactivate your environment on your local machine:
 
-`$ conda activate [name_of_your_environment]`
+`$ conda activate [name_of_your_environment]`<br>   
 `$ conda deactivate`
 
 Export the environment file to share and reproduce the current environments:
