@@ -38,9 +38,9 @@ Deploying the model to production(AWS); building a dashboard for displaying the 
 
 # Collaborating reminder
 
-* When you push your code to the repository, it might cause errors on other's machines if they don't have all the libraries you used. Please use the [twi.yml](https://github.com/persecond17/CDFW2023/blob/main/twi.yml) file in the repo to create/update the virtual environment for running programs on your end.
+When you push your code to the repository, it might cause errors on other's machines if they don't have all the libraries you used. Please use the [twi.yml](https://github.com/persecond17/CDFW2023/blob/main/twi.yml) file in the repo to create/update the virtual environment for running programs on your end.
 
-* A branch allows you to work independently of the master branch. After contributed to your branch, you can make a pull request to merge it with the master branch.
+A branch allows you to work independently of the master branch. After contributed to your branch, you can make a pull request to merge it with the master branch.
 
 ## Environment setting
 
