@@ -6,34 +6,54 @@ To extract information from social media, primarily Twitter, and naturalist comm
 
 # Social Media NLP Project (Xin Ai)
 
-The main focus of [the social media NLP project](https://github.com/persecond17/Black_Bear_CDFW2023/tree/main/social_media_NLP_project) is to use social media data to detect the trend and geo distribution of bear-encountering in California and understand the public's view on human-wildlife interactions. 
+The main focus of [the social media NLP project](https://github.com/persecond17/Black_Bear_CDFW2023/tree/main/Social_Media_NLP) is to use social media data to detect the trend and geo distribution of bear-encountering in California and understand the public's view on human-wildlife interactions. 
 
 Our primary objective is to leverage state-of-the-art natural language processing (NLP) and machine learning (ML) algorithms to effectively classify and filter tweets that are relevant to human-bear interactions. This will be followed by performing time series forecasting and sentiment analysis on the selected tweets to extract meaningful insights. Additionally, we plan to incorporate several other factors, such as rainfall, temperature, and population density, to assess their impact on the frequency and sentiment of human-wildlife interactions. 
 
 Utilizing the end-to-end ETL pipeline, database, and advanced models, we aim to create a user-friendly and intuitive real-time dashboard. This dashboard will provide timely and valuable insights into the public's views on human-wildlife interactions, helping the CDFW develop effective conservation and management strategies based on up-to-date and relevant information.
 
 
-## Step 1: [Data Extraction]()
+## Step 1: Data Extraction
 
-Setting the developer environment and getting Twitter API; writing code to scrape data with keywords for selected periods; extracting features for each record; exploring demo for the automatic process(data pipeline).
+The first step in this project was to set up the developer environment and obtain Twitter APIs. With the library `Tweepy`, we then wrote code to scrape over **450k** Twitter data using queries for specific time periods and geo grids. Next, we parsed the scraped data, which was in JSON format, into CSV format while extracting 13 important features and assigning reasonable coordinates for each record. Finally, we built a pipeline that automated the above processes and deployed it on a remote Airflow using VPN, creating an efficient and reliable workflow for data collection and processing.
 
-- Scraping data
-- Extracting features
-- Building a pipeline
+- [7-days tweets pulling pipeline](https://github.com/persecond17/Black_Bear_CDFW2023/blob/main/Social_Media_NLP/Step_1_Data_Extraction/pull_tweets_recent.py)
+- [Longterm tweets pulling pipeline](https://github.com/persecond17/Black_Bear_CDFW2023/blob/main/Social_Media_NLP/Step_1_Data_Extraction/pull_tweets_longterm.py)
 
-## Cleaning & Labeling 
+## Step 2: Data Preprocessing
 
-Detecting the situations of the collected tweets (“encounter black bears or not”, “talking about real bears or not”); checking data types, deleting outliers, filling Nan values, etc.; manually category each record; creating a database.
+In this stage, we merged log files to create a comprehensive database and removed duplicate entries for uniqueness. The database was reformatted for consistency and saved for further analysis. **Spark** was used to assign a unified county label, improving computation efficiency (Broadcast join: 0.96s, Write the result: 11.86s) for a total of **5.17 billion computations**. We conducted data quality checks to ensure accuracy and reliability. Additionally, we visualized both the tweets database and iNaturalist data for reference and to gain a better understanding of the overall dataset.
 
-## Training model 
+- [Create database](https://github.com/persecond17/Black_Bear_CDFW2023/blob/main/Social_Media_NLP/Step_2_Data_Preprocessing/1_create_database.ipynb)
+- [Calculate using spark](https://github.com/persecond17/Black_Bear_CDFW2023/blob/main/Social_Media_NLP/Step_2_Data_Preprocessing/2_calculate_using_spark.ipynb)
+- [Visualization](https://github.com/persecond17/Black_Bear_CDFW2023/blob/main/Social_Media_NLP/Step_2_Data_Preprocessing/3_visualizations.ipynb)
 
-Training the categorical model with the training set; tuning hyperparameters with the cross-validation sets; testing the model with the test set; evaluating the performance of various sentiment models.
+## Step 3: Data Transformation
 
-## Visualization 
+We refined word chunks using Part-of-Speech (POS) Tagging and performed Clustering filtering with the DBSCAN algorithm. From the most frequent words and the identified clusters, we collected keywords to help identify patterns of tweets that are not related to real bears. We then filtered tweets that mentioned these keywords, as well as cases where 'bear' was used as a verb, which resulted in a reduction of **~47%** of the data. 
 
-Deploying the model to production(AWS); building a dashboard for displaying the search results from the database; combining GIS data for further analyses; designing UI; monitoring and collecting data trends.
+However, due to the highly imbalanced data (with **< 5%** Class 1 tweets), we utilized the [GloVe](https://nlp.stanford.edu/projects/glove/) model for text representation and performed **Iterative Semi-Supervised Learning** with Spectral Clustering and Ada Boosting based on the mini labeled dataset. This approach proved effective in handling extreme imbalanced data, even with only hundreds of positive labeled records, and helped us save significant time and resources.
+
+label = 0: not related to real bears
+label = 1: related to real bears, and even related to encountering real bears
+label = 2: related to real bears, but not related to encountering real bears
+
+- [Filtering by tagging and clustering](https://github.com/persecond17/Black_Bear_CDFW2023/blob/main/Social_Media_NLP/Step_3_Data_Transformation/1_filtering_by_tagging_and_clustering.ipynb)
+- [Handling imbalanced data](https://github.com/persecond17/Black_Bear_CDFW2023/blob/main/Social_Media_NLP/Step_3_Data_Transformation/2_handling_imbalanced_data.ipynb)
+- [Appendix: Clustering from scratch](https://github.com/persecond17/Black_Bear_CDFW2023/blob/main/Social_Media_NLP/Step_3_Data_Transformation/Clustering_from_Scratch.ipynb)
+
+## Step 4: Data Modeling
+
+Through our extensive exploration of **6 text classification models**, including Naive Bayes, Random Forest, Support Vector Machine, Logistic Regression, AdaBoost, and Augmentation Pipeline + ML Model, we developed an ensemble model to improve the accuracy of our classification task. We began with a baseline model, tuning it through grid search, applying dimensionality reduction techniques, and implementing feature selection methods. Our ensemble model, which used the mode of votes from these models to classify text, significantly outperformed any single model used before. It improved the F1 score and accuracy from 0.642 and 0.643 (baseline) to 0.851 and 0.862 (ensemble), achieving an **~35% performance improvement**.
+
+Using the ensemble model, we predicted 40k unlabeled data and created a subset of records predicted as 1 or 2. We then sent this subset to CDFW environmental scientists for manual labeling. This approach is highly efficient as it significantly narrows down the range of data and improves the handling of imbalanced data. 
+
+- [Text classification with ensemble model](https://github.com/persecond17/Black_Bear_CDFW2023/blob/main/Social_Media_NLP/Step_4_Data_Modeling/text_classification_with_ensemble_model.ipynb)
 
 ## Further exploration
+
+- If you would like to learn more about the data scraping process, please click on the description [file] provided.
+
 
 
 # iNaturalist Logistic Regression Project (Sharon Dodda)
