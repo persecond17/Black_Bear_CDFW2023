@@ -1,19 +1,19 @@
 # CDFW: Twitter sentiment analysis - Black Bears
 
-The Wildlife Health Laboratory(WHL) at CDFW(California Department of Fish and Wildlife) includes a program that works to help resolve human-wildlife conflict in the state, including livestock depredation, property damage, public safety, and animal welfare issues. A major focus of this work is a human conflict with black bears. The State is working on updating its black bear conservation and management plan, therefore this research is a high priority for CDFW. 
-USF(University of San Francisco) analysts would work with CDFW scientists(ecology & social science) to extract information from social media(primarily Twitter) using text analysis, sentiment analysis, and thematic coding.
+The California Department of Fish and Wildlife (CDFW) operates the Wildlife Health Laboratory [(WHL)](https://wildlife.ca.gov/Conservation/Laboratories/Wildlife-Health), which runs [the Human-Wildlife Conflicts Program](https://wildlife.ca.gov/Conservation/Laboratories/Wildlife-Health/HWC-Program#551962502-black-bear) aimed at mitigating human-wildlife conflict across the state. This includes issues such as property damage, public safety, animal welfare, and livestock depredation. A key area of focus for the program is the conflict between humans and [black bears](https://wildlife.ca.gov/Conservation/Mammals/Black-Bear#572681130-potential-conflict-and-depredation). As the state updates its black bear conservation and management plan, this research is of significant importance to CDFW.
+To extract information from social media, primarily Twitter, and naturalist community, primarily iNaturalist, the data scientists from the University of San Francisco (USF) will collaborate with CDFW scientists specializing in ecology and social science. The process involves utilizing text analysis, sentiment analysis, and thematic coding techniques to analyze the data.
 
 
-# Objectives
+# Social Media NLP Project (Xin Ai)
 
-The main focus of this project is to use social media data to detect the trend of encountering black bears in California and understand the public's view on human-wildlife interactions. 
+The main focus of [the social media NLP project](https://github.com/persecond17/Black_Bear_CDFW2023/tree/main/social_media_NLP_project) is to use social media data to detect the trend and geo distribution of bear-encountering in California and understand the public's view on human-wildlife interactions. 
 
-We are currently working to achieve this by using machine learning to classify relevant tweets and perform sentiment analysis on them. Additionally, we plan to incorporate other covariates such as rainfall, temperate, and population density to see how they influence the number of occurrences and sentiment of human-wildlife interactions.
+Our primary objective is to leverage state-of-the-art natural language processing (NLP) and machine learning (ML) algorithms to effectively classify and filter tweets that are relevant to human-bear interactions. This will be followed by performing time series forecasting and sentiment analysis on the selected tweets to extract meaningful insights. Additionally, we plan to incorporate several other factors, such as rainfall, temperature, and population density, to assess their impact on the frequency and sentiment of human-wildlife interactions. 
+
+Utilizing the end-to-end ETL pipeline, database, and advanced models, we aim to create a user-friendly and intuitive real-time dashboard. This dashboard will provide timely and valuable insights into the public's views on human-wildlife interactions, helping the CDFW develop effective conservation and management strategies based on up-to-date and relevant information.
 
 
-# Roadmap
-
-## Scraping data 
+## Step 1: [Data Extraction]()
 
 Setting the developer environment and getting Twitter API; writing code to scrape data with keywords for selected periods; extracting features for each record; exploring demo for the automatic process(data pipeline).
 
@@ -34,6 +34,9 @@ Training the categorical model with the training set; tuning hyperparameters wit
 Deploying the model to production(AWS); building a dashboard for displaying the search results from the database; combining GIS data for further analyses; designing UI; monitoring and collecting data trends.
 
 ## Further exploration
+
+
+# iNaturalist Logistic Regression Project (Sharon Dodda)
 
 
 # Collaborating reminder
