@@ -1,7 +1,7 @@
-# CDFW: Twitter sentiment analysis - Black Bears
+# CDFW: Using NLP and ML Algorithms to Study Human-Black Bear Conflicts in California with Social Media and Community Data
 
 The California Department of Fish and Wildlife (CDFW) operates the Wildlife Health Laboratory [(WHL)](https://wildlife.ca.gov/Conservation/Laboratories/Wildlife-Health), which runs [the Human-Wildlife Conflicts Program](https://wildlife.ca.gov/Conservation/Laboratories/Wildlife-Health/HWC-Program#551962502-black-bear) aimed at mitigating human-wildlife conflict across the state. This includes issues such as property damage, public safety, animal welfare, and livestock depredation. A key area of focus for the program is the conflict between humans and [black bears](https://wildlife.ca.gov/Conservation/Mammals/Black-Bear#572681130-potential-conflict-and-depredation). As the state updates its black bear conservation and management plan, this research is of significant importance to CDFW.
-To extract information from social media, primarily Twitter, and naturalist community, primarily iNaturalist, the data scientists from the University of San Francisco (USF) will collaborate with CDFW scientists specializing in ecology and social science. The process involves utilizing text analysis, sentiment analysis, and thematic coding techniques to analyze the data.
+To extract information from social media, primarily Twitter, and naturalist community, primarily iNaturalist, a collaborative effort between data scientists and ecology and social science specialists is being carried out. The process involves utilizing text analysis, sentiment analysis, and thematic coding techniques to analyze the data.
 
 
 # Social Media NLP Project (Xin Ai)
@@ -34,9 +34,11 @@ We refined word chunks using Part-of-Speech (POS) Tagging and performed Clusteri
 
 However, due to the highly imbalanced data (with **< 5%** Class 1 tweets), we utilized the [GloVe](https://nlp.stanford.edu/projects/glove/) model for text representation and performed **Iterative Semi-Supervised Learning** with Spectral Clustering and Ada Boosting based on the mini labeled dataset. This approach proved effective in handling extreme imbalanced data, even with only hundreds of positive labeled records, and helped us save significant time and resources.
 
-label = 0: not related to real bears
-label = 1: related to real bears, and even related to encountering real bears
-label = 2: related to real bears, but not related to encountering real bears
+>label = 0: not related to real bears
+
+>label = 1: related to real bears, and even related to encountering real bears
+
+>label = 2: related to real bears, but not related to encountering real bears
 
 - [Filtering by tagging and clustering](https://github.com/persecond17/Black_Bear_CDFW2023/blob/main/Social_Media_NLP/Step_3_Data_Transformation/1_filtering_by_tagging_and_clustering.ipynb)
 - [Handling imbalanced data](https://github.com/persecond17/Black_Bear_CDFW2023/blob/main/Social_Media_NLP/Step_3_Data_Transformation/2_handling_imbalanced_data.ipynb)
