@@ -3,3 +3,5 @@ numpy
 geopy
 rasterio
 matplotlib
+tqdm
+scikit-learn

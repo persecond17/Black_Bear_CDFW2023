@@ -33,11 +33,15 @@ def add_landcode(df_bears, df_nlcd):
     df_bears['landcode'] = '99'
     for i in range(df_bears.shape[0]):
         bear_coord = df_bears.iloc[i, 0:2].values
-        print('bear_coord: ', bear_coord)
+        # print('bear_coord: ', bear_coord)
+        bear_lat = bear_coord[0]
+        bear_lon = bear_coord[1]
         temp_nlcd = df_nlcd.copy()
+        temp_nlcd = temp_nlcd[temp_nlcd['lat'].between(bear_lat-1, bear_lat+1)]
+        temp_nlcd = temp_nlcd[temp_nlcd['lon'].between(bear_lon-1, bear_lon+1)]
         temp_nlcd['dist'] = temp_nlcd.apply(lambda x: dist_btw_2_coords(bear_coord, [x['lat'], x['lon']]), axis=1)
         code = temp_nlcd.sort_values('dist').head(1).iloc[:, 2].values[0]
         df_bears.iloc[i, 8] = code
-        print(f" df_bears row {i}", end="\r")
+        # print(f" df_bears row {i}", end="\r")
         
     return df_bears
