@@ -11,7 +11,7 @@ Our primary objective is to leverage state-of-the-art natural language processin
 
 Utilizing the end-to-end ETL pipeline, database, and advanced models, we aim to create a user-friendly and intuitive real-time dashboard. This dashboard will provide timely and valuable insights into the public's views on human-wildlife interactions, helping the CDFW develop effective conservation and management strategies based on up-to-date and relevant information.
 
-**[Dashboard](https://persecond17-black-social-media-nlpdashboardblackbear-app-ctv67u.streamlit.app/)**
+### **[Bear Encounter Dashboard](https://persecond17-black-social-media-nlpdashboardblackbear-app-ctv67u.streamlit.app/)**
 ![User Guide for the Dashboard](./Social_Media_NLP/dashboard/dashboard_pic.png)
 
 
