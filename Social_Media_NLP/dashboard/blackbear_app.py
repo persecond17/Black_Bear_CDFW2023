@@ -145,7 +145,7 @@ if len(filtered_dataset) > 0:
 
     # map
     # Read shapefile
-    ca_shapefile = 'CA_Counties_TIGER2016.shp'
+    ca_shapefile = 'Social_Media_NLP/dashboard/CA_Counties_TIGER2016.shp'
     gdf = gpd.read_file(ca_shapefile)
 
     # Define the CRS for the GeoDataFrame
