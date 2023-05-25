@@ -13,7 +13,7 @@ from datetime import datetime
 # Set page title and layout
 st.set_page_config(page_title='Bear Encounters in California')
 
-dataset = pd.read_csv('final_db.csv')
+dataset = pd.read_csv('Social_Media_NLP/dashboard/final_db.csv')
 target_dataset = dataset.loc[dataset['label']==1]
 target_dataset['created_datetime'] = pd.to_datetime(target_dataset['created_datetime'], errors='coerce')
 target_dataset['date'] = target_dataset['created_datetime'].dt.date
