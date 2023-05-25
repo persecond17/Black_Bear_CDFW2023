@@ -5,12 +5,14 @@ To extract information from social media, primarily Twitter, and naturalist comm
 
 
 # Social Media NLP Project (Xin Ai)
-
 The main focus of [the social media NLP project](https://github.com/persecond17/Black_Bear_CDFW2023/tree/main/Social_Media_NLP) is to use social media data to detect the trend and geo distribution of bear-encountering in California and understand the public's view on human-wildlife interactions. 
 
 Our primary objective is to leverage state-of-the-art natural language processing (NLP) and machine learning (ML) algorithms to effectively classify and filter tweets that are relevant to human-bear interactions. This will be followed by performing time series forecasting and sentiment analysis on the selected tweets to extract meaningful insights. Additionally, we plan to incorporate several other factors, such as rainfall, temperature, and population density, to assess their impact on the frequency and sentiment of human-wildlife interactions. 
 
 Utilizing the end-to-end ETL pipeline, database, and advanced models, we aim to create a user-friendly and intuitive real-time dashboard. This dashboard will provide timely and valuable insights into the public's views on human-wildlife interactions, helping the CDFW develop effective conservation and management strategies based on up-to-date and relevant information.
+
+**[Dashboard](https://persecond17-black-social-media-nlpdashboardblackbear-app-ctv67u.streamlit.app/)**
+![User Guide for the Dashboard](Social_Media_NLP/dashboard/dashboard_pic.png)
 
 
 ## Step 1: Data Extraction
