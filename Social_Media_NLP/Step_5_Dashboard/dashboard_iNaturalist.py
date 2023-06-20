@@ -5,7 +5,7 @@ import numpy as np
 
 def app():
     st.title('iNaturalist')
-    df = pd.read_csv('final_data_iNaturalist.csv')
+    df = pd.read_csv('./final_data_iNaturalist.csv')
 
     # plot 1 - monthly
     y = df['month'].value_counts()
