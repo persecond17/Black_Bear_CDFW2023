@@ -151,7 +151,7 @@ def app():
 
         # map
         # Read shapefile
-        ca_shapefile = 'CA_Counties_TIGER2016.shp'
+        ca_shapefile = 'Social_Media_NLP/Step_5_Dashboard/CA_Counties_TIGER2016.shp'
         gdf = gpd.read_file(ca_shapefile)
 
         # Define the CRS for the GeoDataFrame
