@@ -10,6 +10,31 @@ from plotly.subplots import make_subplots
 from streamlit_folium import folium_static
 from datetime import datetime
 from io import BytesIO
+from pos_tagging import *
+
+def to_excel(df):
+    output = BytesIO()
+    writer = pd.ExcelWriter(output, engine='xlsxwriter')
+    df.to_excel(writer, sheet_name='Sheet1')
+    writer.save()
+    processed_data = output.getvalue()
+    return processed_data
+
+
+def get_table_download_link(df, format, file_name):
+    if format == "CSV":
+        csv = df.to_csv(index=False)
+        # some strings <-> bytes conversions necessary here
+        b64 = base64.b64encode(csv.encode()).decode()
+        return f'<a href="data:file/csv;base64,{b64}" download="{file_name}.csv">Download CSV file</a>'
+    elif format == "Excel":
+        excel = to_excel(df)
+        b64 = base64.b64encode(excel).decode()
+        return f'<a href="data:application/octet-stream;base64,{b64}" download="{file_name}.xlsx">Download Excel file</a>'
+    elif format == "JSON":
+        json = df.to_json(orient='split')
+        b64 = base64.b64encode(json.encode()).decode()
+        return f'<a href="data:application/json;base64,{b64}" download="{file_name}.json">Download JSON file</a>'
 
 
 def app():
@@ -55,11 +80,19 @@ def app():
     if time_start > '2010/01/01' or time_end < '2022/12/31':
         filtered_dataset = filtered_dataset.loc[(filtered_dataset['created_datetime'] >= time_start) & (filtered_dataset['created_datetime'] <= time_end)]
     filtered_data = filtered_dataset.to_dict(orient='records')
+
+
+    # Download the result
+    download_format = st.selectbox(f'Download the dataset of tweets in {county_label} between {time_start} and {time_end}', ['CSV', 'Excel', 'JSON'])
+    file_name = f"{county_label}_{time_start}-{time_end}"
+    if download_format is not None:
+        st.markdown(get_table_download_link(filtered_dataset.drop(['Unnamed: 0'], axis=1), download_format, file_name),
+                    unsafe_allow_html=True)
     st.write("<div style='height: 30px'></div>", unsafe_allow_html=True)
 
 
+    # Display Tweets
     if len(filtered_dataset) > 0:
-        # display tweets
         num = min(10, len(filtered_dataset))
         random_texts = random.sample(filtered_dataset['content'].tolist(), k=num)
         text_block = '\n\n' + '\n\n'.join(
@@ -74,7 +107,7 @@ def app():
         st.write("<div style='height: 30px'></div>", unsafe_allow_html=True)
 
 
-        # frequency plot
+        # Bear-encounter Frequency
         st.subheader(f'Frequency of Bear-encounters in {county_label} between {time_start} and {time_end}')
         yearly_count = filtered_dataset.groupby('year').size()
         seasonal_count = filtered_dataset.groupby('month').size()
@@ -149,7 +182,7 @@ def app():
         st.write("<div style='height: 30px'></div>", unsafe_allow_html=True)
 
 
-        # map
+        # Bear-encounter map
         # Read shapefile
         ca_shapefile = 'Social_Media_NLP/Step_5_Dashboard/CA_Counties_TIGER2016.shp'
         gdf = gpd.read_file(ca_shapefile)
@@ -205,34 +238,27 @@ def app():
         st.plotly_chart(fig1)
 
 
-        # Download the result
-        def to_excel(df):
-            output = BytesIO()
-            writer = pd.ExcelWriter(output, engine='xlsxwriter')
-            df.to_excel(writer, sheet_name='Sheet1')
-            writer.save()
-            processed_data = output.getvalue()
-            return processed_data
+        # Word Cloud
+        contents = clear_text(filtered_dataset)
+        noun_list, verb_list = pos_tagging(contents)
+        num = 50
 
-        def get_table_download_link(df, format):
-            file_name = f"{county_label}_{time_start}-{time_end}"
-            if format == "CSV":
-                csv = df.to_csv(index=False)
-                # some strings <-> bytes conversions necessary here
-                b64 = base64.b64encode(csv.encode()).decode()
-                return f'<a href="data:file/csv;base64,{b64}" download="{file_name}.csv">Download CSV file</a>'
-            elif format == "Excel":
-                excel = to_excel(df)
-                b64 = base64.b64encode(excel).decode()
-                return f'<a href="data:application/octet-stream;base64,{b64}" download="{file_name}.xlsx">Download Excel file</a>'
-            elif format == "JSON":
-                json = df.to_json(orient='split')
-                b64 = base64.b64encode(json.encode()).decode()
-                return f'<a href="data:application/json;base64,{b64}" download="{file_name}.json">Download JSON file</a>'
+        noun_freq = count_words(stemmer(noun_list)).head(num)
+        noun_freq.index = noun_freq.index + 1
 
-        download_format = st.selectbox('Download the filtered dataset', ['CSV', 'Excel', 'JSON'])
-        if download_format is not None:
-            st.markdown(get_table_download_link(filtered_dataset.drop(['Unnamed: 0'], axis=1), download_format), unsafe_allow_html=True)
+        verb_freq = count_words(stemmer(verb_list)).head(num)
+        verb_freq.index = verb_freq.index + 1
+
+        st.subheader(f'Top {len(noun_freq)} Nouns of Bear-encounters Tweets in {county_label} between {time_start} and {time_end}')
+        st.markdown(
+            f"<div style='height: 300px; overflow: scroll; background-color: rgb(244, 244, 244);'>{noun_freq.to_html(justify='center')}</div>",
+            unsafe_allow_html=True
+        )
+        st.subheader(f'Top {len(verb_freq)} Verbs of Bear-encounters Tweets in {county_label} between {time_start} and {time_end}')
+        st.markdown(
+            f"<div style='height: 300px; overflow: scroll; background-color: rgb(244, 244, 244);'>{verb_freq.to_html(justify='center')}</div>",
+            unsafe_allow_html=True
+        )
 
 
     else:
