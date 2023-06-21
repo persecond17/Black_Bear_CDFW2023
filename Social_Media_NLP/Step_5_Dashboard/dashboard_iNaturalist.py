@@ -67,7 +67,7 @@ def app():
     """, unsafe_allow_html=True,)
 
     # Read data
-    df = pd.read_csv('data/final_df_4.csv')
+    df = pd.read_csv('Social_Media_NLP/Step_5_Dashboard/data/final_df_4.csv')
 
 
     # Display dataframe
@@ -124,7 +124,7 @@ def app():
         dict_sightings[num_counties.index[i]] = num_counties[i]
 
     dict_countycodes = dict()
-    with open('data/ca-county-fips.txt', 'r') as f:
+    with open('Social_Media_NLP/Step_5_Dashboard/data/ca-county-fips.txt', 'r') as f:
         for line in f.readlines():
             dict_countycodes[line.split(',')[3].replace(' County','').strip()] = line.split(',')[1]+line.split(',')[2]
 
@@ -327,7 +327,7 @@ def app():
     """, unsafe_allow_html=True)
     st.text('')
 
-    dfd1 = pd.read_csv('data/final_dashboard_data_1.csv')
+    dfd1 = pd.read_csv('Social_Media_NLP/Step_5_Dashboard/data/final_dashboard_data_1.csv')
     st.table(dfd1.iloc[:5,:])
 
     st.markdown("""
@@ -336,7 +336,7 @@ def app():
     </span>
     """, unsafe_allow_html=True)
     st.text('')
-    dfd2 = pd.read_csv('data/final_dashboard_data_2.csv')
+    dfd2 = pd.read_csv('Social_Media_NLP/Step_5_Dashboard/data/final_dashboard_data_2.csv')
     st.table(dfd2.iloc[:5,:])
 
 
