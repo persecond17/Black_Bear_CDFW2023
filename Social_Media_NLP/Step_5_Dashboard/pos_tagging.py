@@ -6,6 +6,8 @@ import spacy
 from spacy.matcher import Matcher
 from nltk.stem.porter import PorterStemmer
 from sklearn.feature_extraction.text import ENGLISH_STOP_WORDS
+import spacy.cli
+spacy.cli.download("en_core_web_lg")
 
 
 def clear_text(df):
