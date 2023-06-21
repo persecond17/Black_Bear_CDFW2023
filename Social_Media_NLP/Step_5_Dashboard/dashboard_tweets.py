@@ -10,11 +10,7 @@ from plotly.subplots import make_subplots
 from streamlit_folium import folium_static
 from datetime import datetime
 from io import BytesIO
-import requests
-
-url = 'https://github.com/persecond17/Black_Bear_CDFW2023/blob/main/Social_Media_NLP/Step_5_Dashboard/pos_tagging.py'
-response = requests.get(url)
-exec(response.text)
+import pos_tagging as ps
 
 
 def to_excel(df):
@@ -244,14 +240,14 @@ def app():
 
 
         # Word Cloud
-        contents = clear_text(filtered_dataset)
-        noun_list, verb_list = pos_tagging(contents)
+        contents = ps.clear_text(filtered_dataset)
+        noun_list, verb_list = ps.pos_tagging(contents)
         num = 50
 
-        noun_freq = count_words(stemmer(noun_list)).head(num)
+        noun_freq = ps.count_words(ps.stemmer(noun_list)).head(num)
         noun_freq.index = noun_freq.index + 1
 
-        verb_freq = count_words(stemmer(verb_list)).head(num)
+        verb_freq = ps.count_words(ps.stemmer(verb_list)).head(num)
         verb_freq.index = verb_freq.index + 1
 
         st.subheader(f'Top {len(noun_freq)} Nouns of Bear-encounters Tweets in {county_label} between {time_start} and {time_end}')
