@@ -10,7 +10,7 @@ from plotly.subplots import make_subplots
 from streamlit_folium import folium_static
 from datetime import datetime
 from io import BytesIO
-from pos_tagging import *
+from Social_Media_NLP.Step_5_Dashboard.pos_tagging import *
 
 def to_excel(df):
     output = BytesIO()
