@@ -12,7 +12,8 @@ plotly-geo
 =======
 scikit-learn
 nltk
-spacy==3.1.0
+spacy==3.1.3
 en_core_web_sm @ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.1.0/en_core_web_sm-3.1.0.tar.gz
 >>>>>>> 1e587660cbd4dfbbf42fd6729a560c284f71744f
-en_core_web_lg @ https://github.com/explosion/spacy-models/releases/download/en_core_web_lg-3.1.0/en_core_web_lg-3.1.0.tar.gz
+spacy[lookups]==3.1.3
+https://github.com/explosion/spacy-models/releases/download/en_core_web_lg-3.1.0/en_core_web_lg-3.1.0.tar.gz
