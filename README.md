@@ -50,17 +50,17 @@ However, due to the highly imbalanced data (with **< 5%** Class 1 tweets), we ut
 
 Through our extensive exploration of **6 text classification models**, including Naive Bayes, Random Forest, Support Vector Machine, Logistic Regression, AdaBoost, and Augmentation Pipeline + ML Model, we developed an ensemble model to improve the accuracy of our classification task. We began with a baseline model, tuning it through grid search, applying dimensionality reduction techniques, and implementing feature selection methods. Our ensemble model, which used the mode of votes from these models to classify text, significantly outperformed any single model used before. It improved the F1 score and accuracy from 0.642 and 0.643 (baseline) to 0.851 and 0.862 (ensemble), achieving an **~35% performance improvement**.
 
-Using the ensemble model, we predicted 40k unlabeled data and created a subset of records predicted as 1 or 2. We then sent this subset to CDFW environmental scientists for manual labeling. This approach is highly efficient as it significantly narrows down the range of data and improves the handling of imbalanced data. 
+Using the ensemble model, we predicted 40k unlabeled data and sent the subset of records predicted as 1 or 2 to CDFW environmental scientists for manual labeling. With the returned labeled data, we rigorously fine-tuned the RoBERTa language model using strategic techniques like **stratified sampling and data augmentation**. This approach aimed to mimic the original class proportions, which was proved to be highly efficient in managing imbalanced data, and demonstrated robust performance even on unlabeled data. The successful implementation of these strategies culminated in an impressive **F1 score of 0.91**, enabling us to analyze and utilize **6017 bear-encounter-related tweets** for comprehensive data analysis and effective dashboard building.
 
 - [Text classification with ensemble model](https://github.com/persecond17/Black_Bear_CDFW2023/blob/main/Social_Media_NLP/Step_4_Data_Modeling/text_classification_with_ensemble_model.ipynb)
+- [Fine tune LLMs - RoBERTa](https://github.com/persecond17/Black_Bear_CDFW2023/blob/main/Social_Media_NLP/Step_4_Data_Modeling/DL_train_bi.py)
+- [Sentiment analysis](https://github.com/persecond17/Black_Bear_CDFW2023/blob/main/Social_Media_NLP/Step_4_Data_Modeling/sentiment_analysis.ipynb)
+- [Environmental factors analysis](https://github.com/persecond17/Black_Bear_CDFW2023/blob/main/Social_Media_NLP/Step_4_Data_Modeling/environmental_analysis.ipynb)
 
 ## Further exploration
 
-- If you would like to learn more about the data scraping process, please click on the description [file] provided.
+- If you would like to learn more, please click on the [report](https://github.com/persecond17/Black_Bear_CDFW2023/blob/main/Social_Media_NLP/NLP_social_media_report.pdf).
 
-
-
-# iNaturalist Logistic Regression Project (Sharon Dodda)
 
 
 # Collaborating reminder
