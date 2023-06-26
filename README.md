@@ -52,8 +52,8 @@ Through our extensive exploration of **6 text classification models**, including
 
 Using the ensemble model, we predicted 40k unlabeled data and sent the subset of records predicted as 1 or 2 to CDFW environmental scientists for manual labeling. With the returned labeled data, we rigorously fine-tuned the RoBERTa language model using strategic techniques like **stratified sampling and data augmentation**. This approach aimed to mimic the original class proportions, which was proved to be highly efficient in managing imbalanced data, and demonstrated robust performance even on unlabeled data. The successful implementation of these strategies culminated in an impressive **F1 score of 0.91**, enabling us to analyze and utilize **6017 bear-encounter-related tweets** for comprehensive data analysis and effective dashboard building.
 
-- [Text classification with ensemble model](https://github.com/persecond17/Black_Bear_CDFW2023/blob/main/Social_Media_NLP/Step_4_Data_Modeling/text_classification_with_ensemble_model.ipynb)
-- [Fine tune LLMs - RoBERTa](https://github.com/persecond17/Black_Bear_CDFW2023/blob/main/Social_Media_NLP/Step_4_Data_Modeling/DL_train_bi.py)
+- [ML: Text classification with ensemble model](https://github.com/persecond17/Black_Bear_CDFW2023/blob/main/Social_Media_NLP/Step_4_Data_Modeling/text_classification_with_ensemble_model.ipynb)
+- [DL: Fine tune LLMs - RoBERTa](https://github.com/persecond17/Black_Bear_CDFW2023/blob/main/Social_Media_NLP/Step_4_Data_Modeling/DL_train_bi.py)
 - [Sentiment analysis](https://github.com/persecond17/Black_Bear_CDFW2023/blob/main/Social_Media_NLP/Step_4_Data_Modeling/sentiment_analysis.ipynb)
 - [Environmental factors analysis](https://github.com/persecond17/Black_Bear_CDFW2023/blob/main/Social_Media_NLP/Step_4_Data_Modeling/environmental_analysis.ipynb)
 
