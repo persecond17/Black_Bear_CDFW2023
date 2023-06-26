@@ -61,6 +61,7 @@ Using the ensemble model, we predicted 40k unlabeled data and sent the subset of
 
 - If you would like to learn more, please click on the [report](https://github.com/persecond17/Black_Bear_CDFW2023/blob/main/Social_Media_NLP/NLP_social_media_report.pdf).
 
+![Report page](Social_Media_NLP/Step_5_Dashboard/ublic_sentiments_by_area_and_seasons.jpg)
 
 
 # Collaborating reminder
