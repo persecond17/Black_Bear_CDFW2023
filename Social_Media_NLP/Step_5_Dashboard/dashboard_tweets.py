@@ -252,12 +252,12 @@ def app():
 
         st.subheader(f'Top {len(noun_freq)} Nouns of Bear-encounters Tweets in {county_label} between {time_start} and {time_end}')
         st.markdown(
-            f"<div style='height: 300px; overflow: scroll; background-color: rgb(244, 244, 244);'>{noun_freq.to_html(justify='center')}</div>",
+            f"<div style='height: 300px; overflow: scroll; background-color: rgb(244, 244, 244);'>{noun_freq.to_html(justify='left')}</div>",
             unsafe_allow_html=True
         )
         st.subheader(f'Top {len(verb_freq)} Verbs of Bear-encounters Tweets in {county_label} between {time_start} and {time_end}')
         st.markdown(
-            f"<div style='height: 300px; overflow: scroll; background-color: rgb(244, 244, 244);'>{verb_freq.to_html(justify='center')}</div>",
+            f"<div style='height: 300px; overflow: scroll; background-color: rgb(244, 244, 244);'>{verb_freq.to_html(justify='left')}</div>",
             unsafe_allow_html=True
         )
 

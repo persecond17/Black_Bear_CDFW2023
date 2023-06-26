@@ -1,0 +1,46 @@
+Model name: dl-classification/model_2023-05-31_16_29_bi.pth
+Weights: [0.15000000000000002, 0.85]
+Gamma: 3
+Epoches: 30
+Patience: 5
+Batch size: 64
+Training size: 7204
+Validation size: 801
+Dropout ratio: 0.35
+Learning rate: 5e-06
+Weight decay: 0.0001
+Epochs: 1 | Train Loss:  0.001 | Train Accuracy:  0.753 | Train F1 Score:  0.783 | Val Loss:  0.001 | Val Accuracy:  0.913 | Val F1 Score:  0.916
+Validation Confusion Matrix: 
+ [[689  47]
+ [ 28 102]]
+Epochs: 2 | Train Loss:  0.001 | Train Accuracy:  0.891 | Train F1 Score:  0.899 | Val Loss:  0.001 | Val Accuracy:  0.838 | Val F1 Score:  0.858
+Validation Confusion Matrix: 
+ [[599 137]
+ [  3 127]]
+Epochs: 3 | Train Loss:  0.000 | Train Accuracy:  0.912 | Train F1 Score:  0.918 | Val Loss:  0.000 | Val Accuracy:  0.904 | Val F1 Score:  0.911
+Validation Confusion Matrix: 
+ [[664  72]
+ [ 11 119]]
+Epochs: 4 | Train Loss:  0.000 | Train Accuracy:  0.928 | Train F1 Score:  0.932 | Val Loss:  0.001 | Val Accuracy:  0.883 | Val F1 Score:  0.894
+Validation Confusion Matrix: 
+ [[644  92]
+ [  9 121]]
+Epochs: 5 | Train Loss:  0.000 | Train Accuracy:  0.930 | Train F1 Score:  0.934 | Val Loss:  0.001 | Val Accuracy:  0.894 | Val F1 Score:  0.902
+Validation Confusion Matrix: 
+ [[655  81]
+ [ 11 119]]
+Epochs: 6 | Train Loss:  0.000 | Train Accuracy:  0.933 | Train F1 Score:  0.936 | Val Loss:  0.001 | Val Accuracy:  0.880 | Val F1 Score:  0.891
+Validation Confusion Matrix: 
+ [[639  97]
+ [  7 123]]
+Epochs: 7 | Train Loss:  0.000 | Train Accuracy:  0.923 | Train F1 Score:  0.928 | Val Loss:  0.001 | Val Accuracy:  0.894 | Val F1 Score:  0.902
+Validation Confusion Matrix: 
+ [[655  81]
+ [ 11 119]]
+Epochs: 8 | Train Loss:  0.000 | Train Accuracy:  0.928 | Train F1 Score:  0.932 | Val Loss:  0.001 | Val Accuracy:  0.895 | Val F1 Score:  0.903
+Validation Confusion Matrix: 
+ [[656  80]
+ [ 11 119]]
+Validation loss did not reduce for 5 consecutive epochs, stopping early
+Mean Accuracy: 0.887 +/- 0.022
+Mean Loss: 0.001 +/- 0.000
